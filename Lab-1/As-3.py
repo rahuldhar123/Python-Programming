@@ -7,7 +7,7 @@ class Flight(object):
         self.Date = Date
         Flight.flight_count += 1
 
-    def getFlightDetails(self):
+    def getFlight(self):
         #print("Details of flight are: ", self.Flight_Number, self.From_Loc, self.To_Loc, self.Date)
         return self.Flight_Number, self.From_Loc, self.To_Loc, self.Date
     def getFlightCount(self):
@@ -22,7 +22,7 @@ class Person(object):
         self.Sex = Sex
         Person.person_count += 1
 
-    def printPerseonDetails(self):
+    def persondetails(self):
         return str((self.Name, self.Sex,self.Age))
 
     def getPersonCount(self):
@@ -36,9 +36,9 @@ class Employee(Person): #inheritance
         self.Emp_ID = Emp_ID
         Employee.employee_count += 1
 
-    def printEmployeeDetails(self):
+    def employeedetails(self):
         #Person.Print_Person_Details(self)
-        print("Employee Details are",self.printPerseonDetails(),self.Emp_ID)
+        print("Employee Details are",self.persondetails(),self.Emp_ID)
 
     def getEmployeeCount(self):
         print("Total Number of employees are: ", self.employee_count)
@@ -49,12 +49,12 @@ class Passenger(Person): # inheritance
     def __init__(self, Name, Age, Sex, ID_No, flight):
         Person.__init__(self,Name, Age,Sex)
         self.ID_No = ID_No
-        self.flight_details = flight.getFlightDetails()
+        self.flight_details = flight.getFlight()
         Passenger.passenger_count += 1
 
-    def printPassengerDetails(self):
+    def passengerdetails(self):
         #Person.Print_Person_Details(self)
-        print("Passenger Details are",self.printPerseonDetails(),self.ID_No , "and Flight details are", self.flight_details )
+        print("Passenger Details are",self.persondetails(),self.ID_No , "and Flight details are", self.flight_details )
 
     def getPassengerCount(self):
         print("Total Number of passengers are: ", self.passenger_count)
@@ -64,12 +64,12 @@ class Pilot(Person, Flight):
     assigned_flight = None
     def __init__(self, Name, Age, Sex, Pilot_ID, flight):
         Person.__init__(self,Name, Age, Sex)
-        self.assigned_flight = flight.getFlightDetails()
+        self.assigned_flight = flight.getFlight()
         self.Pilot_ID = Pilot_ID
         Pilot.pilot_count += 1
 
     def pilotDetails(self):
-        print("Pilot Details are",Person.printPerseonDetails(self),self.Pilot_ID,"and assigned flight detils are",self.assigned_flight)
+        print("Pilot Details are",Person.persondetails(self),self.Pilot_ID,"and assigned flight detils are",self.assigned_flight)
 
     def getPilotCount(self):
         print("Totlal number of pilots are: ", self.pilot_count)
@@ -85,11 +85,11 @@ if __name__ == '__main__': #creation of instances of above classes
     Employee2 = Employee('Bala', 73, 'Male', 'E876')
     pilot1 = Pilot('King', 35, 'Male', 'I435', flight1)
 
-    Employee1.printEmployeeDetails()
-    Employee2.printEmployeeDetails()
-    passenger1.printPassengerDetails()
-    passenger2.printPassengerDetails()
-    passenger3.printPassengerDetails()
+    Employee1.employeedetails()
+    Employee2.employeedetails()
+    passenger1.passengerdetails()
+    passenger2.passengerdetails()
+    passenger3.passengerdetails()
     pilot1.pilotDetails()
     pilot1.getPilotCount()
     person1.getPersonCount()
