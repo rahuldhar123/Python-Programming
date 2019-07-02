@@ -17,8 +17,9 @@ print(data.info())
 numeric_features = data.select_dtypes(include=[np.number])
 
 corr = numeric_features.corr()
-print(corr)
 
+print(corr)
+data = data.drop([2],axis=1)
 X = data.drop([13], axis=1)
 Y = data[13]
 #print(X)
